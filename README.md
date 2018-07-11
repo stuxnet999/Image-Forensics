@@ -27,11 +27,11 @@ Let us look at the trend of cyber attacks based on the analysis from January 201
 
 Some handy definitions:
 
-1. Cyber Espionage: Use of computer networks to get access to confidential information held by important organizations.
+1. **Cyber Espionage**: Use of computer networks to get access to confidential information held by important organizations.
 
-2. Hacktivism: Act of hacking which is mainly done for a political purpose.
+2. **Hacktivism**: Act of hacking which is mainly done for a political purpose.
 
-3. Cyber Warfare: Cyber attacks are done on state organizations to gain military secrets etc.
+3. **Cyber Warfare**: Cyber attacks are done on state organizations to gain military secrets etc.
 
 ![alt text](https://github.com/stuxnet999/Image-Forensics/blob/master/Cyber_Attack_Stats.png "Cyber attack motivation")
 Cyber crimes are at 77% in 2017
