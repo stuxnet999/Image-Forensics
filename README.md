@@ -105,6 +105,7 @@ The advantage that steganography has over cryptography is that the hidden data d
 ### Some known tools for steganography:
 
 **1. Steghide :**
+
 It is used to embed and extract secret messages in images. It supports all the general formats of images like .png, .jpg etc.
 ##### To install steghide:
 ```bash
@@ -128,8 +129,9 @@ wrote extracted data to "secret_message.txt".
 $ steghide --help
 ```
 **2. Stegsolve :**
+
 It is used to analyze images in different planes by taking of bits of the image.
-###### To install stegsolve:
+##### To install stegsolve:
 ```bash
 $ wget http://www.caesum.com/handbook/Stegsolve.jar -O stegsolve.jar
 $ chmod +x stegsolve.jar
