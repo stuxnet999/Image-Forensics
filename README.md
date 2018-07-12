@@ -33,7 +33,7 @@ Each chunk has its own header. The header usually describes the type and size of
 
 **How important are chunks ?**
 
-So let us consider that you are trying to open an image using a MP3 player.
+So let us consider that you are trying to open an image using an MP3 player.
 Will the player open the image? No, right.
 It'll give me an error message. Every application has a decoder which checks the type of the chunks given. When it recognizes that the given chunks are supported, it tries to give the desired output. So whenever it comes across chunks of unknown format, it triggers an error message stating **"Unsupported File Format"**
 
@@ -118,7 +118,7 @@ The advantage that steganography has over cryptography is that the hidden data d
 
 ### Some known tools for steganography:
 
-**1. Steghide :**
+**1. Steghide:**
 
 It is used to embed and extract secret messages in images. It supports all the general formats of images like .png, .jpg etc.
 ##### To install steghide:
