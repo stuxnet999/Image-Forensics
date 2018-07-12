@@ -14,7 +14,7 @@ So let us look into some of the very basic definitions of the technical terms us
 
 ##### File Signature:
 
-A typical file signature is something which defines the nature of a file and also tells us about the specific features of the particular file. This is also called as the file header.
+A typical file signature is something which defines the nature of a file and also tells us about the specific features of the particular file. This is also called as the file header or sometimes as the checksum.
 
 So let us look at some examples:
 
@@ -30,6 +30,12 @@ Chunks are nothing but fragments of information used by different multimedia for
 Each chunk has its own header. The header usually describes the type and size of the chunk.
 
 ![alt text](https://github.com/stuxnet999/Image-Forensics/blob/master/Chunk_example.png "Chunk example")
+
+**How important are chunks ?**
+
+So let us consider that you are trying to open an image using a MP3 player.
+Will the player open the image? No, right.
+It'll give me an error message. Every application has a decoder which checks the type of the chunks given. When it recognizes that the given chunks are supported, it tries to give the desired output. So whenever it comes across chunks of unknown format, it triggers an error message stating **"Unsupported File Format"**
 
 ##### CRC:
 
