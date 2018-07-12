@@ -37,11 +37,14 @@ So let us consider that you are trying to open an image using a MP3 player.
 Will the player open the image? No, right.
 It'll give me an error message. Every application has a decoder which checks the type of the chunks given. When it recognizes that the given chunks are supported, it tries to give the desired output. So whenever it comes across chunks of unknown format, it triggers an error message stating **"Unsupported File Format"**
 
+
 #### **Cyclic Redundant Checksum**:
 
 Cyclic redundant checksum(CRC) is an integral value which represents the sum of correct digits in a piece of data.
 Checksums help us to check the data integrity of a file which is transmitted across the digital network.
 There are many checksum algorithms. Checksum algorithms are employed in various cybersecurity concepts like **fingerprinting, cryptographic hash functions** etc. 
+
+&nbsp;
 
 So now let us look at the file format of a **PNG** image:
 
@@ -77,6 +80,7 @@ Let us look at some examples:
 
 *_Note_* : *_All the ancillary chunks start with a small letter._*
 
+&nbsp;
 #### Executable and Linkable Format (ELF):
 The ELF file format is standard file format for executables, object codes, core dumps etc. for any UNIX based system.
 
@@ -85,6 +89,7 @@ The ELF file format is standard file format for executables, object codes, core 
 The file header of an ELF file defines whether to use 32-bit or 64-bit addresses.
 ELF files are generally analysed using a tool called **readelf**.
 
+&nbsp;
 #### ZIP :
 Zip is actually a file format which supports lossless data compression. This file format achieves the compression of a file(s) using a number of compression algorithms.
 DEFLATE is the most used compression algorithm. Zip files have the file extension .zip or.ZIP.
@@ -103,9 +108,11 @@ To extract out the compressed data:
 ``` bash 
 $ binwalk -e <file_name>
 ```
+&nbsp;
+
 # Steganography :
 
-##### What is Steganography?
+#### What is Steganography?
 Steganography is an amazing art of hiding data inside images, videos etc. 
 The advantage that steganography has over cryptography is that the hidden data does not attract serious attention. However, when someone sees a cryptographic data, they'll immediately recognize that this data is encrypted. Though the extraction of the hidden message is difficult in cryptography, steganographic data looks less malicious!!
 
