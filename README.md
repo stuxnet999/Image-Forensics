@@ -12,7 +12,7 @@ Some of them include:
 
 So let us look into some of the very basic definitions of the technical terms used in this field to better understand the upcoming topics.
 
-##### **File Signature**:
+#### **File Signature**:
 
 A typical file signature is something which defines the nature of a file and also tells us about the specific features of the particular file. This is also called as the file header or sometimes as the checksum.
 
@@ -24,7 +24,7 @@ So let us look at some examples:
 
 The 'hex' values shown are also called as **magic numbers.**
 
-##### **Chunks**:
+#### **Chunks**:
 
 Chunks are nothing but fragments of information used by different multimedia formats like **PNG, MP3** etc.
 Each chunk has its own header. The header usually describes the type and size of the chunk.
@@ -37,7 +37,7 @@ So let us consider that you are trying to open an image using a MP3 player.
 Will the player open the image? No, right.
 It'll give me an error message. Every application has a decoder which checks the type of the chunks given. When it recognizes that the given chunks are supported, it tries to give the desired output. So whenever it comes across chunks of unknown format, it triggers an error message stating **"Unsupported File Format"**
 
-##### **Cyclic Redundant Checksum**:
+#### **Cyclic Redundant Checksum**:
 
 Cyclic redundant checksum(CRC) is an integral value which represents the sum of correct digits in a piece of data.
 Checksums help us to check the data integrity of a file which is transmitted across the digital network.
