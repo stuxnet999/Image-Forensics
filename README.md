@@ -1,44 +1,161 @@
-# **Introduction**
+# __Image Forensics__
 
-### What is Cyber Forensics?
+#### What is Image Forensics?
 
-Cyber Forensics is a science which deals with techniques used to track the **footprints** left behind a cyber attack.
-Cyber forensics is directly linked to any cybercrime which has data loss and recovery. Some examples include investigation on possible **forged digital signatures, the authenticity of images, analysis of malicious software** etc.
+To keep it very simple and straight, **Image Forensics** is a specific branch of cyber forensics which deals with a various number of attacks.
 
-Let us go into more detail of the definition from a CTF perspective. Any Capture The Flag contest usually has three prime categories of digital forensics.
-They are:
+Some of them include:
 
-  1. Network Forensics
-  2. Image Forensics
-  3. Memory Forensics
+1. The authenticity of an image
 
-# **Scope of Forensics** 
+2. Detection of possible forgeries etc.
 
-When we talk about employment, research or anything, Cyber Forensics is one of the prime areas which comes into a security analyst's mind.
-Forensics is strongly employed in **Incident Response, Malware Analysis, Data leak protection**. Actually, to sum it up, every cybercrime is always related to cyber forensics.
+So let us look into some of the very basic definitions of the technical terms used in this field to better understand the upcoming topics.
 
-To really understand this, let us look into a very dangerous virus attack which almost started world war III.
-**Stuxnet** was a virus which was found lurking in the systems which controlled nuclear centrifuges in Iran.
-Stuxnet had a stolen yet officially authorised digital signature which acted as a very good camouflage. Stuxnet made the windows systems constantly reboot or lead them to **Blue Screen of Death**. Stuxnet could easily affect any computer which was linked to the network. It was really difficult for security experts to trace it. It severely affected the **SCADA systems** which were employed in maintaining the rotation speed of the centrifuges.
-After heavy investigation, when several forensic analysts looked into the SCADA network transfer, they found a malicious program being run which altered the system processes. The main aspect which made Stuxnet almost invisible was that it became active only when its target was present or being run. Until then the virus remained dormant.
-So as you can see, Cyber forensics played a huge role in the detection of the virus.
+##### File Signature:
 
-Let us look at the trend of cyber attacks based on the analysis from January 2017-2018:
+A typical file signature is something which defines the nature of a file and also tells us about the specific features of the particular file. This is also called as the file header.
 
-Some handy definitions:
+So let us look at some examples:
 
-1. **Cyber Espionage**: Use of computer networks to get access to confidential information held by important organizations.
+1. PNG -> **89 50 4E 47 0D 0A 1A 0A**
 
-2. **Hacktivism**: Act of hacking which is mainly done for a political purpose.
+2. ZIP FILE -> **50 4B 05 06**
 
-3. **Cyber Warfare**: Cyber attacks are done on state organizations to gain military secrets etc.
+The 'hex' values shown are also called as **magic numbers.**
 
-![alt text](https://github.com/stuxnet999/Image-Forensics/blob/master/Cyber_Attack_Stats.png "Cyber attack motivation")
-Cyber crimes are at 77% in 2017
+##### Chunks:
 
-Now let us look at January 2018:
-![alt text](https://github.com/stuxnet999/Image-Forensics/blob/master/2018-analysis.png "January 2018")
+Chunks are nothing but fragments of information used by different multimedia formats like **PNG, MP3** etc.
+Each chunk has its own header. The header usually describes the type and size of the chunk.
 
-So as you can see, the percentage has increased to an alarming rate.
+![alt text](https://github.com/stuxnet999/Image-Forensics/blob/master/Chunk_example.png "Chunk example")
 
-So, folks, I hope you understand just how important cyber forensics is in the current world of cybersecurity.
+##### CRC:
+
+Cyclic redundant checksum is an integral value which represents the sum of correct digits in a piece of data.
+Checksums help us to check the data integrity of a file which is transmitted across the digital network.
+There are many checksum algorithms. Checksum algorithms are employed in various cybersecurity concepts like **fingerprinting, cryptographic hash functions** etc. 
+
+So now let us look at the file format of a **PNG** image:
+
+#### Portable Network Graphics (PNG):
+
+A PNG is a graphical file format of an image which supports **lossless compresion**.
+
+**Magic Number** -> **89 50 4E 47 0D 0A 1A 0A**
+
+![alt text](https://github.com/stuxnet999/Image-Forensics/blob/master/PNG_File-Header.png "PNG File Header")
+
+So now let us look at the critical chunks of a PNG image:
+
+#### **Critical chunks** :
+
+**IHDR** -> Describes image dimensions, color type, bit depth etc. It must be noted that this must be the first chunk (always).
+
+**PLTE** -> Contains the list of colours.
+
+**IDAT** -> Contains the image data.
+
+**IEND** -> Marks the end of the image.
+
+#### **Ancillary chunks** :
+Ancillary chunks can be otherwise called as optional chunks. These are the chunks which are generally ignored by decoders.
+Let us look at some examples:
+
+**bKGD** -> Gives the default background colour.
+
+**dSIG** -> This chunk is used to store the digital signature of the image.
+
+**pHYS** -> Holds the pixel size and the ratio of dimensions of the image.
+
+*_Note_* : *_All the ancillary chunks start with a small letter._*
+
+#### Executable and Linkable Format (ELF):
+The ELF file format is standard file format for executables, object codes, core dumps etc. for any UNIX based system.
+
+**Magic Number** -> **7F 45 4c 46**
+
+The file header of an ELF file defines whether to use 32-bit or 64-bit addresses.
+
+#### ZIP :
+Zip is actually a file format which supports lossless data compression. This file format achieves the compression of a file(s) using a number of compression algorithms.
+DEFLATE is the most used compression algorithm. Zip files have the file extension .zip or.ZIP.
+
+ **Magic Number** -> **PK .. ..**
+ 
+![alt text](https://github.com/stuxnet999/Image-Forensics/blob/master/zip.png "ZIP FILE HEADER")
+
+Microsoft Windows, MacOS and several Linux distributions have built-in zip compression.
+Zip files can be extracted through the terminal using tools like **binwalk**.
+To install binwalk:
+```bash
+$ sudo apt install binwalk
+```
+To extract out the compressed data:
+``` bash 
+$ binwalk -e <file_name>
+```
+# Steganography :
+
+##### What is Steganography?
+Steganography is an amazing art of hiding data inside images, videos etc. 
+The advantage that steganography has over cryptography is that the hidden data does not attract serious attention. However, when someone sees a cryptographic data, they'll immediately recognize that this data is encrypted. Though the extraction of the hidden message is difficult in cryptography, steganographic data looks less malicious!!
+
+### Some known tools for steganography:
+
+**1. Steghide :**
+It is used to embed and extract secret messages in images. It supports all the general formats of images like .png, .jpg etc.
+##### To install steghide:
+```bash
+$ sudo apt install stegide
+```
+##### To embed a secret message into an image:
+```bash
+$ steghide embed -cf image.jpg -ef secret_message.txt
+Enter passphrase : ********
+Re-Enter passphrase : ********
+embedding "secret_message.txt" in "image.jpg"... done
+```
+##### To extract secret message from image:
+```bash 
+$ steghide extract -sf image.jpg
+Enter passphrase : ********
+wrote extracted data to "secret_message.txt".
+```
+##### For any help with the commands type:
+```bash
+$ steghide --help
+```
+**2. Stegsolve :**
+It is used to analyze images in different planes by taking of bits of the image.
+###### To install stegsolve:
+```bash
+$ wget http://www.caesum.com/handbook/Stegsolve.jar -O stegsolve.jar
+$ chmod +x stegsolve.jar
+$ mkdir bin
+$ mv stegsolve.jar bin/
+```
+Stegsolve can be invoked by placing the image in the /bin folder and running stegsolve. 
+```bash
+$ java -jar stegsolve.jar
+```
+![alt text](https://github.com/stuxnet999/Image-Forensics/blob/master/stegsolve-blue.png "The Blue Plane")
+![alt text](https://github.com/stuxnet999/Image-Forensics/blob/master/stegsolve-green.png "Green Plane")
+
+There are over 10 different planes supported by stegsolve like **Alpha, Blue, Green, Red, XOR etc**.
+
+**3. Ghex :**
+Ghex is tool which helps us to view the hex data or hex dump of an image.
+##### To install Ghex:
+```bash
+$ sudo apt install ghex
+```
+##### To use Ghex:
+```bash
+$ ghex image.jpg
+```
+![alt text](https://github.com/stuxnet999/Image-Forensics/blob/master/ghex.png "Ghex")
+
+Using ghex we can see the headers, footers, and the data chunks of an image.
+It is to be noted that ghex can be used for all types of files not only images.
